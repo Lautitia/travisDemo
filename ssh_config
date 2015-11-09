@@ -1,0 +1,5 @@
+Host 42.120.42.45
+    User root
+    StrictHostKeyChecking no
+    IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
