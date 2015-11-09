@@ -10,7 +10,7 @@ before_install:
 # Add the private key to the system
 - ssh-add ~/.ssh/id_rsa
 # Copy SSH config
-- cp .travis/ssh_config ~/.ssh/config
+#- cp .travis/ssh_config ~/.ssh/config
 - git remote add deploy ssh://root@42.120.42.45:5522/home/cloudenergy/travisDemo.git
 - git push deploy
 script: npm test
