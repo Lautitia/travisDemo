@@ -1,11 +1,9 @@
 language: node_js
 
 branches:
-  only:
-    - develop
+  only: develop
 
-node_js:
-  - '0.11'
+node_js: '0.10'
 
 before_install:
   - echo -e "Host 42.120.42.45\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
