@@ -9,6 +9,8 @@ before_install:
 #- eval "$(ssh-agent -s)"
 #- ssh-add ~/.ssh/id_rsa
 #- cp .travis/ssh_config ~/.ssh/config
+- git config --global user.name "Lautitia"
+- git config --global user.email christozhou@gmail.com
 - git remote add deploy ssh://root@42.120.42.45:5522/home/cloudenergy/travisDemo.git
 - git push deploy
 script: npm test
