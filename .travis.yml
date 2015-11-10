@@ -3,14 +3,12 @@ node_js:
 - 0.1
 before_install:
 - npm install
-- openssl aes-256-cbc -K $encrypted_827ade550aa3_key -iv $encrypted_827ade550aa3_iv -in travisDemo.enc -out ~/.ssh/id_rsa -d
+- openssl aes-256-cbc -K $encrypted_827ade550aa3_key -iv $encrypted_827ade550aa3_iv
+  -in travisDemo.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
-# Start SSH agent
-- eval $(ssh-agent)
-# Add the private key to the system
-- ssh-add ~/.ssh/id_rsa
-# Copy SSH config
-- cp .travis/ssh_config ~/.ssh/config
+#- eval "$(ssh-agent -s)"
+#- ssh-add ~/.ssh/id_rsa
+#- cp .travis/ssh_config ~/.ssh/config
 - git remote add deploy ssh://root@42.120.42.45:5522/home/cloudenergy/travisDemo.git
 - git push deploy
 script: npm test
