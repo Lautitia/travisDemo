@@ -5,7 +5,7 @@ var app = express();
 
 app.use('/test', function (req, res, next) {
     var i = 0;
-    res.send('GOGOGO');
+    res.send('JOEY');
 });
 
 app.listen(config.port);
