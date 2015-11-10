@@ -12,7 +12,7 @@ before_install:
 #- git config --global user.email christozhou@gmail.com
 #- git remote add deploy ssh://root@42.120.42.45:5522/home/cloudenergy/travisDemo.git
 #- git push deploy
-after_install:
+after_success:
 - git push —force —quiet "https://${git_server}@${git_user}" develop:gh-pages > /dev/null 2>&1
 
 script: npm test
