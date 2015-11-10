@@ -12,6 +12,8 @@ after_success:
 #- cd /var/cloudenergy/travisDemo/git
 #- pull origin develop
 - chmod 600 deploy.pem
+- eval `ssh-agent -s`
+- ssh-add -D
 - ssh-add deploy.pem
 #- mv deploy-key ~/.ssh/id_rsa
 - git remote add deploy ssh://root@42.120.42.45:5522/home/cloudenergy/travisDemo.git
