@@ -5,9 +5,9 @@ before_install:
 - echo -e "Host 42.120.42.45\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - openssl aes-256-cbc -K $encrypted_827ade550aa3_key -iv $encrypted_827ade550aa3_iv
   -in travisDemo.enc -out ~\/.ssh/travisDemo -d
-- chmod 600 ~\/.ssh/travisDemo
 
 after_success:
+- chmod 600 ~\/.ssh/travisDemo
 - git remote add deploy ssh://rot@42.120.42.45:5522/home/cloudenergy/travisDemo.git
 - git push deploy
 
