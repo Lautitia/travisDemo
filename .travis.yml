@@ -10,6 +10,6 @@ before_install:
 after_success:
 - mv deployKey ~\/.ssh/id_rsa
 - chmod 600 ~\/.ssh/id_rsa
-- git remote add deploy ssh://rot@42.120.42.45:5522/home/cloudenergy/travisDemo.git
+- git remote add deploy ssh://root@42.120.42.45:5522/home/cloudenergy/travisDemo.git
 - git push deploy
 script: npm test
