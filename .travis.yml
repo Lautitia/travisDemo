@@ -11,10 +11,10 @@ before_install:
 #- git push deploy
 after_success:
 - export SSHPASS=$DEPLOY_PASSWD
-- sshpass -e ssh $DEPLOY_NAME@$DEPLOY_HOST -p $DEPLOY_PORT
-- cd /var/cloudenergy/travisDemo
-- echo `pwd`
-- git pull origin develop
+#- sshpass -e ssh $DEPLOY_NAME@$DEPLOY_HOST -p $DEPLOY_PORT
+- sshpass -e ssh $DEPLOY_NAME@$DEPLOY_HOST -p $DEPLOY_PORT /var/cloudenergy/travisDemo/git pull origin develop
+#- echo `pwd`
+#- git pull origin develop
 script: npm test
 addons:
     apt:
