@@ -1,22 +1,21 @@
 language: node_js
 node_js:
 - 0.1
-
 before_install:
 - echo -e "Host 42.120.42.45\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - openssl aes-256-cbc -K $encrypted_827ade550aa3_key -iv $encrypted_827ade550aa3_iv
-  -in travisDemo.enc -out deploy_key -d
+  -in travisDemo.enc -out ~\/.ssh/travisDemo -d
+- chmod 600 ~\/.ssh/travisDemo
 
 after_success:
-- chmod 600 deploy_key
-- mv deploy-key ~/.ssh/id_rsa
 - git remote add deploy ssh://rot@42.120.42.45:5522/home/cloudenergy/travisDemo.git
 - git push deploy
+
 script: npm test
-addons:
-  apt:
-    packages:
-    - spawn
+#addons:
+#  apt:
+#    packages:
+#    - spawn
 env:
   global:
     secure: pL8AEFaFCHmLTTFe+K86PHyk8Fs2PaCRkOQ8rR1LatKP3u7DJ3zW5mJnpjuOsxRxN42WlEm6otyXakQpzAE4gVecr3EbzJNvepc090pj2ojI8ei99DVl+XlFMreCyUln7Xi0MQiUHIjre9yoVT3ldXv5XBvsC2fIuvmd85y5R8vJS38TQ5Ny7xk0DBnOf8MS2SFKxlOra2CGSyBTlYAzOqXOEbRk67+caIffQJKmiz5ZA6FXW26kM0LmCeZjKxJb3lD3cXxzw3gOCzB/zrBpJpJ1cjOTvo21XdoNBA/DC3B1A5miwKOO/ngr7xljjKkomIaw6MBeYZVq6fVgmBfbNr/a0DoZB2ywiyxdHGEIpi4KyS+/fQMlcTPTSBArf62bEuU5l3G5zkjmJdEeORfqLyjF/4h2hcycrKu8qgqZkwnH4tz0J1uo/oq/VzgkZYy3j/n+nZLpF7yBUOPcLZ5DCNuoSZLimCbwllLnek/nmRnLL9mfK6180d5FhV7Dleaw/l+tdVTyoX1CvlpIO4otdBJAfF9mufHKj9XJcQoyjibC2BKOqjr80cPk7ToZfoLngH7rVjQTHamjliSy7jEibu/DV2j1FznG7oysr+MfG2J0Y7mmpKzfXOG8j1z1hqodFYKHNfwymXmIJzxjnczzzNTVZB4+2dZpWTg3cBXQjZU=
