@@ -7,7 +7,8 @@ before_install:
 
 after_success:
 - export SSHPASS=$DEPLOY_PASSWD
-- sshpass -e ssh $DEPLOY_NAME@$DEPLOY_HOST -p $DEPLOY_PORT /var/cloudenergy/travisDemo/git
+- sshpass -e ssh $DEPLOY_NAME@$DEPLOY_HOST -p $DEPLOY_PORT
+- cd /var/cloudenergy/travisDemo/git
 - pull origin develop
 script: npm test
 addons:
