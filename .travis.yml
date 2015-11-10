@@ -2,10 +2,8 @@ language: node_js
 node_js:
 - 0.1
 before_install:
-- openssl aes-256-cbc -K $encrypted_827ade550aa3_key -iv $encrypted_827ade550aa3_iv
-  -in id_rsa.enc -out ~\/.ssh/id_rsa -d
-- npm install
-- chmod 600 ~\/.ssh/id_rsa
+- openssl aes-256-cbc -K $encrypted_827ade550aa3_key -iv $encrypted_827ade550aa3_iv -in id_rsa.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
 #- eval "$(ssh-agent -s)"
 #- ssh-add ~\/Documents/Cloud/SSH/travisDemo/travisDemo
 #- cp .travis/ssh_config ~/.ssh/config
