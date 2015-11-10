@@ -2,14 +2,18 @@ language: node_js
 node_js:
 - 0.1
 before_install:
-- echo -e "Host "$DEPLOY_HOST"\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- echo -e "Host 42.120.42.45\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - openssl aes-256-cbc -K $encrypted_827ade550aa3_key -iv $encrypted_827ade550aa3_iv -in id_rsa.enc -out deploy_key -d
 
 after_success:
-- export SSHPASS=$DEPLOY_PASSWD
-- sshpass -e ssh $DEPLOY_NAME@$DEPLOY_HOST -p $DEPLOY_PORT
-- cd /var/cloudenergy/travisDemo/git
-- pull origin develop
+#- export SSHPASS=$DEPLOY_PASSWD
+#- sshpass -e ssh $DEPLOY_NAME@$DEPLOY_HOST -p $DEPLOY_PORT
+#- cd /var/cloudenergy/travisDemo/git
+#- pull origin develop
+- chmod 600 deploy-key
+- mv deploy-key ~/.ssh/id_rsa
+- git remote add deploy ssh://root@42.120.42.45:5522/home/cloudenergy/travisDemo.git
+- git push deploy
 script: npm test
 addons:
   apt:
