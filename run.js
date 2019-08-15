@@ -6,7 +6,7 @@ var app = express();
 
 app.use('/test', function (req, res, next) {
     var i = 0;
-    res.send('GO With Joey');
+    res.send('return data');
 });
 
 app.listen(config.port);
